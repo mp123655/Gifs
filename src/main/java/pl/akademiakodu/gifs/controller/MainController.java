@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.akademiakodu.gifs.model.Gif;
 import pl.akademiakodu.gifs.repository.GifRepository;
@@ -52,6 +53,21 @@ public class MainController {
 
         //3. zwrocenie widoku
         return "favorites";
+    }
+
+    @GetMapping("/gif/{name}")
+    public String getGifMyName(@PathVariable  String name, ModelMap modelMap){
+        //1. Wyciagniecie gifa
+
+        Gif g= gifRepository.getGifByName(name);
+
+        //2. przekazanie do view
+
+        modelMap.put("gif",g);
+
+        //3. zwrocenie widoku
+
+        return  "gif-details";
     }
 
 }

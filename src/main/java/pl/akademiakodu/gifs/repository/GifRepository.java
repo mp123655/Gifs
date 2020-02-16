@@ -37,13 +37,17 @@ public class GifRepository {
 
         return ALL_GIFS.stream()
                 .filter(Gif::getFavorite)
-            .collect(Collectors.toList());
-
+                .collect(Collectors.toList());
     }
 
+    public Gif getGifByName(String name) {
+        Gif gif = null;
+        for (Gif g : ALL_GIFS) {
+            if (g.getName().equals(name)) {
+                return g;
+            }
+        }
+        return null;
+    }
 
 }
-
-
-
-
