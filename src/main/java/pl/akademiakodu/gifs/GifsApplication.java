@@ -10,4 +10,5 @@ public class GifsApplication {
 		SpringApplication.run(GifsApplication.class, args);
 	}
 
+
 }
